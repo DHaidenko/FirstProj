@@ -32,8 +32,34 @@ public class Main {
         threeAndNine(entered);
         //6.4. Числа, которые делятся на 5 и на 7.
         fiveAndSeven(entered);
-        //6.5. Все трехзначные числа, в десятичной записи которых нет одинаковых цифр.*/
-        separate3digits(entered);
+        //6.5. Все трехзначные числа, в десятичной записи которых нет одинаковых цифр.
+        separate3digits(entered);  */
+        //6.6. «Счастливые» числа.
+        lucky(entered);
+
+    }
+
+    private static void lucky(int[] entered) {
+        for (int i = 0; i < entered.length; i++) {
+            int enLength = Integer.toString(entered[i]).length();
+            if (enLength == 6) {
+                int digit1 = entered[i] / 100_000;
+                int digit2 = (entered[i] - (digit1 * 100_000)) / 10_000;
+                int digit3 = (entered[i] - (digit1 * 100_000) - (digit2 * 10_000)) / 1000;
+                System.out.println("digit3 = " + digit3);
+                int digit4 = (entered[i] - (digit1 * 100_000) - (digit2 * 10_000)- (digit3 * 1000)) / 100;
+                System.out.println("digit4 = " + digit4);
+                int digit5 = (entered[i] - (digit1 * 100_000) - (digit2 * 10_000)- (digit3 * 1000) - (digit4 * 100))/10;
+                System.out.println("digit5 = " + digit5);
+                int digit6 = entered[i] % 10;
+                System.out.println("digit6 = " + digit6);
+                int lucky1 = digit1+digit2+digit3;
+                int lucky2 = digit4+digit4+digit6;
+                if (lucky1==lucky2){
+                    System.out.println("lucky number = " + entered[i]);
+                }
+            }
+        }
     }
 
     private static void separate3digits(int[] entered) {
